@@ -25,6 +25,7 @@ enum framework_keycodes {
 };
 
 extern bool bios_mode;
+extern bool is_suspended;
 
 // Uncomment this to show hotkey mode with capslock LED and backlight
 // hotkey mode on:  capslock ON,  RGB red

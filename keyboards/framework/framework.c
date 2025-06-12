@@ -5,6 +5,8 @@
 #include "framework.h"
 #include "os_detection.h"
 
+bool is_suspended = false;
+
 void keyboard_post_init_kb(void) {
   keyboard_post_init_user();
 
@@ -45,6 +47,8 @@ void keyboard_pre_init_kb(void) {
 void suspend_power_down_kb(void) {
   suspend_power_down_user();
 
+  is_suspended = true;
+
 #ifdef RGB_MATRIX_ENABLE
 #  ifndef NO_SUSPEND_POWER_DOWN
   writePinLow(IS31FL3743A_ENABLE_GPIO);
@@ -57,6 +61,8 @@ void suspend_power_down_kb(void) {
  */
 void suspend_wakeup_init_kb(void) {
   suspend_wakeup_init_user();
+
+  is_suspended = false;
 
 #ifdef RGB_MATRIX_ENABLE
 #  ifndef NO_SUSPEND_POWER_DOWN
