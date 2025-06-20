@@ -59,6 +59,22 @@ jobs:
         path: |
           framework_*.uf2
 
+    - name: Convert UF2 to bin
+      run: |
+          ./util/uf2conv.py framework_ansi_default.uf2     --convert --output framework_ansi_default.bin
+          ./util/uf2conv.py framework_ansi_copilot.uf2     --convert --output framework_ansi_copilot.bin
+          ./util/uf2conv.py framework_iso_default.uf2      --convert --output framework_iso_default.bin
+          ./util/uf2conv.py framework_iso_copilot.uf2      --convert --output framework_iso_copilot.bin
+          ./util/uf2conv.py framework_jis_default.uf2      --convert --output framework_jis_default.bin
+          ./util/uf2conv.py framework_numpad_default.uf2   --convert --output framework_numpad_default.bin
+          ./util/uf2conv.py framework_macropad_default.uf2 --convert --output framework_macropad_default.bin
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: fl16_kb_qmk.${{github.sha}}.bin
+        path: |
+          framework_*.bin
+
 #  tests:
 #    runs-on: ubuntu-latest
 #
