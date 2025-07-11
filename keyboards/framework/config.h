@@ -141,3 +141,6 @@
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
+
+// Add BOS descriptor to tell fwupd that we support rpi-pico protocol
+#define FWUPD_CAP
