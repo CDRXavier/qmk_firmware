@@ -535,12 +535,39 @@ const USB_Descriptor_Bos_t PROGMEM BosDescriptor = {
             // 0x00020002
             .WindowsVersion     = {0x02, 0x00, 0x02, 0x00},
             // Length of the data returned by control request
-            .TotalLength        = 0xA6,
+            .TotalLength        = 0x59,
             .VendorCode         = 0x2a,
             .AltEnumCode        = 0,
         }},
     },
 #endif // FWUPD_CAP
+
+#ifdef PICOBOOT_CAP
+    .MsosCap       = {
+        // 2 Bytes (=> 7 Bytes)
+        .Header = {
+            .Size = sizeof(USB_Descriptor_Capability_Msos_t),
+            .Type = 16,
+        },
+        // 5 Bytes (=> 12 Bytes / 0x0C Bytes)
+        .DevCapabilityType      = 5, // Platform
+        .Reserved               = 0,
+        // Microsoft OS 2.0 {D8DD60DF-4589-4CC7-9CD2-659D9E648A9F}
+        .PlatformCapabilityId   = {
+            0xDF, 0x60, 0xDD, 0xD8,
+            0x89, 0x45, 0xC7, 0x4C,
+            0x9C, 0xD2, 0x65, 0x9D,
+            0x9E, 0x64, 0x8A, 0x9F
+        },
+        .Set                    = {{
+            .WindowsVersion     = {0x00, 0x00, 0x03, 0x06}, // Windows Blue
+            // Length of the data returned by control request
+            .TotalLength        = 0xA6,
+            .VendorCode         = 0x01, // Microsoft
+            .AltEnumCode        = 0,
+        }},
+    },
+#endif // PICOBOOT_CAP
 
 #ifdef MSOS2_CAP
     // 28 Bytes (0x1C)
