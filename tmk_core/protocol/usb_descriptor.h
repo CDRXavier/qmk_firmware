@@ -92,8 +92,6 @@ typedef struct {
     USB_Descriptor_Endpoint_t  Shared_INEndpoint;
 #endif
 
-    USB_Descriptor_Interface_t Rp2040_Reset_Interface;
-
 #ifdef CONSOLE_ENABLE
     // Console HID Interface
     USB_Descriptor_Interface_t Console_Interface;
@@ -147,6 +145,8 @@ typedef struct {
     USB_HID_Descriptor_HID_t   Digitizer_HID;
     USB_Descriptor_Endpoint_t  Digitizer_INEndpoint;
 #endif
+
+    USB_Descriptor_Interface_t Rp2040_Reset_Interface;
 } USB_Descriptor_Configuration_t;
 
 /*
@@ -175,8 +175,6 @@ enum usb_interfaces {
     SHARED_INTERFACE,
 #endif
 
-    RP2040_RESET_INTERFACE,
-
 #ifdef CONSOLE_ENABLE
     CONSOLE_INTERFACE,
 #endif
@@ -198,6 +196,8 @@ enum usb_interfaces {
 #if defined(DIGITIZER_ENABLE) && !defined(DIGITIZER_SHARED_EP)
     DIGITIZER_INTERFACE,
 #endif
+
+    RP2040_RESET_INTERFACE,
     TOTAL_INTERFACES
 };
 
@@ -395,7 +395,7 @@ typedef struct
 #ifdef FWUPD_CAP
     USB_Descriptor_Capability_Msos_t FwupdCap;
 #endif
-#ifdef MSOS2_CAP
+#if defined(PICOBOOT_CAP) || defined(MSOS2_CAP)
     USB_Descriptor_Capability_Msos_t MsosCap;
 #endif
 } ATTR_PACKED USB_Descriptor_Bos_t;

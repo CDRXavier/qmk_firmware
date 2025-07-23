@@ -144,3 +144,5 @@
 
 // Add BOS descriptor to tell fwupd that we support rpi-pico protocol
 #define FWUPD_CAP
+#define PICOBOOT_CAP
+//#define MSOS2_CAP

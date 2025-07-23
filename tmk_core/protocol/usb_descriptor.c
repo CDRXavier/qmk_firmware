@@ -493,7 +493,25 @@ const USB_Descriptor_Bos_t PROGMEM BosDescriptor = {
     },
     // 3 Bytes (=> 5 Bytes)
     // Value must be header + each cap
-#if defined(MSOS2_CAP) || defined(FWUPD_CAP)
+#if defined(MSOS2_CAP) && defined(FWUPD_CAP) && defined(PICOBOOT_CAP)
+    .TotalLength                = 0x0060,
+    .NumDeviceCaps              = 0x04,
+#elif defined(FWUPD_CAP) && defined(PICOBOOT_CAP)
+    .TotalLength                = 0x0044,
+    .NumDeviceCaps              = 0x03,
+#elif defined(MSOS2_CAP) && defined(FWUPD_CAP)
+    .TotalLength                = 0x0044,
+    .NumDeviceCaps              = 0x03,
+#elif defined(MSOS2_CAP) && defined(PICOBOOT_CAP)
+    .TotalLength                = 0x0044,
+    .NumDeviceCaps              = 0x03,
+#elif defined(MSOS2_CAP)
+    .TotalLength                = 0x0028,
+    .NumDeviceCaps              = 0x02,
+#elif defined(FWUPD_CAP)
+    .TotalLength                = 0x0028,
+    .NumDeviceCaps              = 0x02,
+#elif defined(PICOBOOT_CAP)
     .TotalLength                = 0x0028,
     .NumDeviceCaps              = 0x02,
 #else
@@ -535,12 +553,39 @@ const USB_Descriptor_Bos_t PROGMEM BosDescriptor = {
             // 0x00020002
             .WindowsVersion     = {0x02, 0x00, 0x02, 0x00},
             // Length of the data returned by control request
-            .TotalLength        = 0x0059,
+            .TotalLength        = 0x59,
             .VendorCode         = 0x2a,
             .AltEnumCode        = 0,
         }},
     },
 #endif // FWUPD_CAP
+
+#ifdef PICOBOOT_CAP
+    .MsosCap       = {
+        // 2 Bytes (=> 7 Bytes)
+        .Header = {
+            .Size = sizeof(USB_Descriptor_Capability_Msos_t),
+            .Type = 16,
+        },
+        // 5 Bytes (=> 12 Bytes / 0x0C Bytes)
+        .DevCapabilityType      = 5, // Platform
+        .Reserved               = 0,
+        // Microsoft OS 2.0 {D8DD60DF-4589-4CC7-9CD2-659D9E648A9F}
+        .PlatformCapabilityId   = {
+            0xDF, 0x60, 0xDD, 0xD8,
+            0x89, 0x45, 0xC7, 0x4C,
+            0x9C, 0xD2, 0x65, 0x9D,
+            0x9E, 0x64, 0x8A, 0x9F
+        },
+        .Set                    = {{
+            .WindowsVersion     = {0x00, 0x00, 0x03, 0x06}, // Windows Blue
+            // Length of the data returned by control request
+            .TotalLength        = 0xA6,
+            .VendorCode         = 0x01, // Microsoft
+            .AltEnumCode        = 0,
+        }},
+    },
+#endif // PICOBOOT_CAP
 
 #ifdef MSOS2_CAP
     // 28 Bytes (0x1C)
@@ -768,19 +813,6 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor = {
         .PollingIntervalMS      = USB_POLLING_INTERVAL_MS
     },
 #endif
-    .Rp2040_Reset_Interface = {
-        .Header = {
-            .Size               = sizeof(USB_Descriptor_Interface_t),
-            .Type               = DTYPE_Interface
-        },
-        .InterfaceNumber        = RP2040_RESET_INTERFACE,
-        .AlternateSetting       = 0x00,
-        .TotalEndpoints         = 0,
-        .Class                  = 0xFF,
-        .SubClass               = 0x00, // RESET_INTERFACE_SUBCLASS
-        .Protocol               = 0x01, // RESET_INTERFACE_PROTOCOL
-        .InterfaceStrIndex      = NO_DESCRIPTOR
-    },
 
 #ifdef CONSOLE_ENABLE
     /*
@@ -1166,6 +1198,19 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor = {
         .PollingIntervalMS      = USB_POLLING_INTERVAL_MS
     },
 #endif
+    .Rp2040_Reset_Interface = {
+        .Header = {
+            .Size               = sizeof(USB_Descriptor_Interface_t),
+            .Type               = DTYPE_Interface
+        },
+        .InterfaceNumber        = RP2040_RESET_INTERFACE,
+        .AlternateSetting       = 0x00,
+        .TotalEndpoints         = 0,
+        .Class                  = 0xFF,
+        .SubClass               = 0x00, // RESET_INTERFACE_SUBCLASS
+        .Protocol               = 0x01, // RESET_INTERFACE_PROTOCOL
+        .InterfaceStrIndex      = NO_DESCRIPTOR
+    },
 };
 
 /*
