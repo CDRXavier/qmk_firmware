@@ -884,7 +884,7 @@ static bool usb_request_hook_cb(USBDriver *usbp) {
         // Microsoft vendor code = 0x01
         // FWUPD     vendor code = 0x2a
         // wRequest
-        && usbp->setup[1] == 0x2a
+        && usbp->setup[1] == 0x01
         // wValue
         && usbp->setup[2] == 0x00 && usbp->setup[3] == 0x00
         // wIndex: MS_OS_20_DESCRIPTOR_INDEX
