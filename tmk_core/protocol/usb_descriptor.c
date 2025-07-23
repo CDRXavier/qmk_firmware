@@ -535,7 +535,7 @@ const USB_Descriptor_Bos_t PROGMEM BosDescriptor = {
             // 0x00020002
             .WindowsVersion     = {0x02, 0x00, 0x02, 0x00},
             // Length of the data returned by control request
-            .TotalLength        = 0x0059,
+            .TotalLength        = 0xA6,
             .VendorCode         = 0x2a,
             .AltEnumCode        = 0,
         }},
