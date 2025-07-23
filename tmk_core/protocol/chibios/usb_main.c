@@ -142,7 +142,7 @@ static uint8_t picoboot_descriptor_set[] __attribute__((aligned(4))) = {
     'U',  0x00, 'I',  0x00,
     'D',  0x00, 0x00, 0x00,
     0x4E, 0x00,             // wPropertyDataLength – 78 bytes
-    '{',  0x00, 'b',  0x00,  // PropertyData - "{bc7398c1-73cd-4cb7-98b8-913a8fca7bf6}"
+    '{',  0x00, 'b',  0x00, // PropertyData - "{bc7398c1-73cd-4cb7-98b8-913a8fca7bf6}"
     'c',  0x00, '7',  0x00,
     '3',  0x00, '9',  0x00,
     '8',  0x00, 'c',  0x00,

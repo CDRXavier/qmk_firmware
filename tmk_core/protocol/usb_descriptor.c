@@ -493,7 +493,25 @@ const USB_Descriptor_Bos_t PROGMEM BosDescriptor = {
     },
     // 3 Bytes (=> 5 Bytes)
     // Value must be header + each cap
-#if defined(MSOS2_CAP) || defined(FWUPD_CAP)
+#if defined(MSOS2_CAP) && defined(FWUPD_CAP) && defined(PICOBOOT_CAP)
+    .TotalLength                = 0x0060,
+    .NumDeviceCaps              = 0x04,
+#elif defined(FWUPD_CAP) && defined(PICOBOOT_CAP)
+    .TotalLength                = 0x0044,
+    .NumDeviceCaps              = 0x03,
+#elif defined(MSOS2_CAP) && defined(FWUPD_CAP)
+    .TotalLength                = 0x0044,
+    .NumDeviceCaps              = 0x03,
+#elif defined(MSOS2_CAP) && defined(PICOBOOT_CAP)
+    .TotalLength                = 0x0044,
+    .NumDeviceCaps              = 0x03,
+#elif defined(MSOS2_CAP)
+    .TotalLength                = 0x0028,
+    .NumDeviceCaps              = 0x02,
+#elif defined(FWUPD_CAP)
+    .TotalLength                = 0x0028,
+    .NumDeviceCaps              = 0x02,
+#elif defined(PICOBOOT_CAP)
     .TotalLength                = 0x0028,
     .NumDeviceCaps              = 0x02,
 #else
