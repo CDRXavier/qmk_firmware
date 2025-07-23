@@ -92,8 +92,6 @@ typedef struct {
     USB_Descriptor_Endpoint_t  Shared_INEndpoint;
 #endif
 
-    USB_Descriptor_Interface_t Rp2040_Reset_Interface;
-
 #ifdef CONSOLE_ENABLE
     // Console HID Interface
     USB_Descriptor_Interface_t Console_Interface;
@@ -147,6 +145,8 @@ typedef struct {
     USB_HID_Descriptor_HID_t   Digitizer_HID;
     USB_Descriptor_Endpoint_t  Digitizer_INEndpoint;
 #endif
+
+    USB_Descriptor_Interface_t Rp2040_Reset_Interface;
 } USB_Descriptor_Configuration_t;
 
 /*
