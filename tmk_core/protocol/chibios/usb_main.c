@@ -102,7 +102,7 @@ static uint8_t picoboot_descriptor_set[] __attribute__((aligned(4))) = {
     0x0A, 0x00,             // wLength - 10 bytes
     0x00, 0x00,             // wDescriptorType - MSOS20_SET_HEADER_DESCRIPTOR
     0x00, 0x00, 0x03, 0x06, // dwWindowsVersion – 0x06030000 for Windows Blue
-    0x48, 0x00,             // wTotalLength – 72 bytes
+    0xA6, 0x00,             // wTotalLength – 166 bytes
 
     //
     // Microsoft OS 2.0 Function Subset Header
