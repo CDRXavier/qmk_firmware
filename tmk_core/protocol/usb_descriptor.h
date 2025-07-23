@@ -175,8 +175,6 @@ enum usb_interfaces {
     SHARED_INTERFACE,
 #endif
 
-    RP2040_RESET_INTERFACE,
-
 #ifdef CONSOLE_ENABLE
     CONSOLE_INTERFACE,
 #endif
@@ -198,6 +196,8 @@ enum usb_interfaces {
 #if defined(DIGITIZER_ENABLE) && !defined(DIGITIZER_SHARED_EP)
     DIGITIZER_INTERFACE,
 #endif
+
+    RP2040_RESET_INTERFACE,
     TOTAL_INTERFACES
 };
 
