@@ -462,9 +462,9 @@ const USB_Descriptor_Device_t PROGMEM DeviceDescriptor = {
     .SubClass                   = USB_CSCP_IADDeviceSubclass,
     .Protocol                   = USB_CSCP_IADDeviceProtocol,
 #else
-    .Class                      = USB_CSCP_NoDeviceClass,
-    .SubClass                   = USB_CSCP_NoDeviceSubclass,
-    .Protocol                   = USB_CSCP_NoDeviceProtocol,
+    .Class                      = 0xEF, // Miscellaneous // USB_CSCP_NoDeviceClass,
+    .SubClass                   = 0x02, // USB_CSCP_NoDeviceSubclass,
+    .Protocol                   = 0x01, // USB_CSCP_NoDeviceProtocol,
 #endif
 
     .Endpoint0Size              = FIXED_CONTROL_ENDPOINT_SIZE,
@@ -638,6 +638,18 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor = {
         .ConfigurationStrIndex  = NO_DESCRIPTOR,
         .ConfigAttributes       = (USB_CONFIG_ATTR_RESERVED | USB_CONFIG_ATTR_REMOTEWAKEUP),
         .MaxPowerConsumption    = USB_CONFIG_POWER_MA(USB_MAX_POWER_CONSUMPTION)
+    },
+    .Keyboard_Interface_Association = {
+        .Header = {
+            .Size               = sizeof(USB_Descriptor_Interface_Association_t),
+            .Type               = DTYPE_InterfaceAssociation
+        },
+        .FirstInterfaceIndex    = KEYBOARD_INTERFACE,
+        .TotalInterfaces        = 4,
+        .Class                  = HID_CSCP_HIDClass,
+        .SubClass               = HID_CSCP_BootSubclass,
+        .Protocol               = HID_CSCP_KeyboardBootProtocol,
+        .IADStrIndex            = NO_DESCRIPTOR,
     },
 #ifndef KEYBOARD_SHARED_EP
     /*
