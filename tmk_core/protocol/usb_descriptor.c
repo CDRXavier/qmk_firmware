@@ -645,7 +645,7 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor = {
             .Type               = DTYPE_InterfaceAssociation
         },
         .FirstInterfaceIndex    = KEYBOARD_INTERFACE,
-        .TotalInterfaces        = 4,
+        .TotalInterfaces        = RP2040_RESET_INTERFACE, // It's the interface after this
         .Class                  = HID_CSCP_HIDClass,
         .SubClass               = HID_CSCP_BootSubclass,
         .Protocol               = HID_CSCP_KeyboardBootProtocol,
