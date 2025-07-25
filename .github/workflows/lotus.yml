@@ -25,9 +25,8 @@ jobs:
     - name: Lint Framework Laptop 16
       run: |
         qmk lint -kb framework/ansi -km default
-        qmk lint -kb framework/ansi -km copilot
+        qmk lint -kb framework/copilot -km default
         qmk lint -kb framework/iso -km default
-        qmk lint -kb framework/iso -km copilot
         qmk lint -kb framework/jis -km default
         qmk lint -kb framework/numpad -km default
         qmk lint -kb framework/macropad -km default
@@ -36,13 +35,10 @@ jobs:
       run: qmk compile -kb framework/ansi -km default
 
     - name: Build Framework Laptop 16 ANSI copilot variant
-      run: qmk compile -kb framework/ansi -km copilot
+      run: qmk compile -kb framework/copilot -km default
 
     - name: Build Framework Laptop 16 ISO variant
       run: qmk compile -kb framework/iso -km default
-
-    - name: Build Framework Laptop 16 ISO variant
-      run: qmk compile -kb framework/iso -km copilot
 
     - name: Build Framework Laptop 16 JIS variant
       run: qmk compile -kb framework/jis -km default
@@ -62,9 +58,8 @@ jobs:
     - name: Convert UF2 to bin
       run: |
           ./util/uf2conv.py framework_ansi_default.uf2     --convert --output framework_ansi_default.bin
-          ./util/uf2conv.py framework_ansi_copilot.uf2     --convert --output framework_ansi_copilot.bin
+          ./util/uf2conv.py framework_copilot_default.uf2  --convert --output framework_copilot_default.bin
           ./util/uf2conv.py framework_iso_default.uf2      --convert --output framework_iso_default.bin
-          ./util/uf2conv.py framework_iso_copilot.uf2      --convert --output framework_iso_copilot.bin
           ./util/uf2conv.py framework_jis_default.uf2      --convert --output framework_jis_default.bin
           ./util/uf2conv.py framework_numpad_default.uf2   --convert --output framework_numpad_default.bin
           ./util/uf2conv.py framework_macropad_default.uf2 --convert --output framework_macropad_default.bin
