@@ -393,7 +393,12 @@ typedef struct
     uint8_t  NumDeviceCaps; /**< The number of separate device capability descriptors in the BOS.
                                 */
     USB_Descriptor_Capability_Usb20Ext_t Usb20ExtensionDevCap;
+#ifdef FWUPD_CAP
+    USB_Descriptor_Capability_Msos_t FwupdCap;
+#endif
+#if defined(PICOBOOT_CAP) || defined(MSOS2_CAP)
     USB_Descriptor_Capability_Msos_t MsosCap;
+#endif // FWUPD_CAP
 } ATTR_PACKED USB_Descriptor_Bos_t;
 
 /** \brief Standard USB BOS Descriptor (USB-IF naming conventions).

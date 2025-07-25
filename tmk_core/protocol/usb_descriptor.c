@@ -532,7 +532,7 @@ const USB_Descriptor_Bos_t PROGMEM BosDescriptor = {
 
 #ifdef FWUPD_CAP
     // See https://fwupd.github.io/libfwupdplugin/ds20.html
-    .MsosCap       = {
+    .FwupdCap       = {
         // 2 Bytes (=> 7 Bytes)
         .Header = {
             .Size = sizeof(USB_Descriptor_Capability_Msos_t),
