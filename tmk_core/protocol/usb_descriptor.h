@@ -57,6 +57,7 @@
  */
 typedef struct {
     USB_Descriptor_Configuration_Header_t Config;
+    USB_Descriptor_Interface_Association_t Keyboard_Interface_Association;
 
 #ifndef KEYBOARD_SHARED_EP
     // Keyboard HID Interface
