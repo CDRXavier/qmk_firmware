@@ -645,7 +645,7 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor = {
             .Type               = DTYPE_InterfaceAssociation
         },
         .FirstInterfaceIndex    = KEYBOARD_INTERFACE,
-        .TotalInterfaces        = RP2040_RESET_INTERFACE, // It's the interface after this
+        .TotalInterfaces        = CONSOLE_INTERFACE, // It's the interface after this
         .Class                  = HID_CSCP_HIDClass,
         .SubClass               = 0x00, // HID_CSCP_BootSubclass,
         .Protocol               = 0x00, // HID_CSCP_KeyboardBootProtocol,
@@ -826,6 +826,18 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor = {
     },
 #endif
 
+    .Console_Interface_Association = {
+        .Header = {
+            .Size               = sizeof(USB_Descriptor_Interface_Association_t),
+            .Type               = DTYPE_InterfaceAssociation
+        },
+        .FirstInterfaceIndex    = CONSOLE_INTERFACE,
+        .TotalInterfaces        = 1,
+        .Class                  = HID_CSCP_HIDClass,
+        .SubClass               = 0x00,
+        .Protocol               = 0x00,
+        .IADStrIndex            = NO_DESCRIPTOR,
+    },
 #ifdef CONSOLE_ENABLE
     /*
      * Console
