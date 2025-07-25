@@ -32,7 +32,9 @@
 // Enable serial number. Calls into dyn_serial_number_string* functions
 #define SERIAL_NUMBER
 
-#ifdef KEYBOARD_framework_ansi
+#if KEYBOARD_framework_ansi
+    #define LED_CAPS_LOCK_PIN GP24
+#elif KEYBOARD_framework_copilot
     #define LED_CAPS_LOCK_PIN GP24
 #elif KEYBOARD_framework_iso
     #define LED_CAPS_LOCK_PIN GP24

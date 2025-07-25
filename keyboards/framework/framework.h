@@ -5,8 +5,10 @@
 
 #include "quantum.h"
 
-#ifdef KEYBOARD_framework_ansi
+#if KEYBOARD_framework_ansi
     #include "ansi.h"
+#elif KEYBOARD_framework_copilot
+    #include "copilot.h"
 #elif KEYBOARD_framework_iso
     #include "iso.h"
 #elif KEYBOARD_framework_jis
