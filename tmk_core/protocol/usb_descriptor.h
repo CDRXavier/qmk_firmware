@@ -93,6 +93,7 @@ typedef struct {
     USB_Descriptor_Endpoint_t  Shared_INEndpoint;
 #endif
 
+    USB_Descriptor_Interface_Association_t Console_Interface_Association;
 #ifdef CONSOLE_ENABLE
     // Console HID Interface
     USB_Descriptor_Interface_t Console_Interface;
