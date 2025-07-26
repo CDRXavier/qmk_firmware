@@ -639,18 +639,6 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor = {
         .ConfigAttributes       = (USB_CONFIG_ATTR_RESERVED | USB_CONFIG_ATTR_REMOTEWAKEUP),
         .MaxPowerConsumption    = USB_CONFIG_POWER_MA(USB_MAX_POWER_CONSUMPTION)
     },
-    .Keyboard_Interface_Association = {
-        .Header = {
-            .Size               = sizeof(USB_Descriptor_Interface_Association_t),
-            .Type               = DTYPE_InterfaceAssociation
-        },
-        .FirstInterfaceIndex    = KEYBOARD_INTERFACE,
-        .TotalInterfaces        = CONSOLE_INTERFACE, // It's the interface after this
-        .Class                  = HID_CSCP_HIDClass,
-        .SubClass               = HID_CSCP_BootSubclass,
-        .Protocol               = HID_CSCP_KeyboardBootProtocol,
-        .IADStrIndex            = NO_DESCRIPTOR,
-    },
 #ifndef KEYBOARD_SHARED_EP
     /*
      * Keyboard
@@ -1222,6 +1210,18 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor = {
         .PollingIntervalMS      = USB_POLLING_INTERVAL_MS
     },
 #endif
+    .Reset_Interface_Association = {
+        .Header = {
+            .Size               = sizeof(USB_Descriptor_Interface_Association_t),
+            .Type               = DTYPE_InterfaceAssociation
+        },
+        .FirstInterfaceIndex    = RP2040_RESET_INTERFACE,
+        .TotalInterfaces        = 1,
+        .Class                  = 0xFF,
+        .SubClass               = 0x00, // RESET_INTERFACE_SUBCLASS
+        .Protocol               = 0x01, // RESET_INTERFACE_PROTOCOL
+        .IADStrIndex            = NO_DESCRIPTOR,
+    },
     .Rp2040_Reset_Interface = {
         .Header = {
             .Size               = sizeof(USB_Descriptor_Interface_t),
