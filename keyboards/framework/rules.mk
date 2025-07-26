@@ -3,8 +3,6 @@
 VIA_ENABLE = yes
 RAW_ENABLE = no
 
-KEYBOARD_SHARED_EP = yes
-
 # Enabled in info.json
 # EXTRAKEY_ENABLE = yes          # Audio control and System control
 
