@@ -462,9 +462,9 @@ const USB_Descriptor_Device_t PROGMEM DeviceDescriptor = {
     .SubClass                   = USB_CSCP_IADDeviceSubclass,
     .Protocol                   = USB_CSCP_IADDeviceProtocol,
 #else
-    .Class                      = 0xEF, // Miscellaneous // USB_CSCP_NoDeviceClass,
-    .SubClass                   = 0x02, // USB_CSCP_NoDeviceSubclass,
-    .Protocol                   = 0x01, // USB_CSCP_NoDeviceProtocol,
+    .Class                      = USB_CSCP_NoDeviceClass,
+    .SubClass                   = USB_CSCP_NoDeviceSubclass,
+    .Protocol                   = USB_CSCP_NoDeviceProtocol,
 #endif
 
     .Endpoint0Size              = FIXED_CONTROL_ENDPOINT_SIZE,
