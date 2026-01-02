@@ -41,7 +41,6 @@ After clearing the flash, the keyboard(s) will appear in bootloader mode.
 * [Framework ANSI with CoPilot](/keyboards/framework/copilot)
 * [Framework ISO](/keyboards/framework/iso)
 * [Framework JIS](/keyboards/framework/jis)
-* [Framework clear](/keyboards/framework/KLE)
 * [Framework macropad](/keyboards/framework/macropad)
 * [Framework Numpad](/keyboards/framework/numpad)
 
