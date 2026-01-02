@@ -4,6 +4,11 @@ This is a keyboard firmware based on the [Framework's fork of QMK firmware](http
 
 Currently, it is based on the FL16-bisect branch.
 
+### Pre-compiled firmware download
+
+You *can* compile the binary yourself. But you can also not.
+Compiled binary is available at folder "[UF2](/UF2)".
+
 ### Notable Changes
 1. Disables Via (disables any functionality through the Framework online interface)
 2. Keyboard specific:
@@ -22,10 +27,6 @@ To upload firmware, copy and paste any `.uf2` binary into the USB drive. Once do
 
 If you are switching over from mainline framework firmware, you must clear the flash first.
 
-### Pre-compiled firmware download
-
-You *can* compile the binary yourself. But you can also not.
-Compiled binary is available at folder "[UF2](/UF2)".
 
 
 ### Clearing the flash
