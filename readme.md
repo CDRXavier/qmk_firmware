@@ -4,9 +4,35 @@ This is a keyboard firmware based on the [Framework's fork of QMK firmware](http
 
 Currently, it is based on the FL16-bisect branch.
 
+### Notable Changes
+1. Disables Via (disables any functionality through the Framework online interface)
+2. Keyboard specific:
+   * Numpad: Backlight breathing toggle now go to "`Esc` + `=`"
+   * Numpad: Backlight brightness toggle now go to "`Esc` + `⟵`"
+
 ## Documentation
 
 For QMK help, [see the official documentation on docs.qmk.fm](https://docs.qmk.fm).
+
+To enter bootloader mode, on:
+Large keyboards: Press `Left Alt` and `Right Alt` while turning on.
+Numpad/RGB numpad: Press "`1`" and "`6`" at the same time.
+
+To upload firmware, copy and paste any `.uf2` binary into the USB drive. Once done, the device will restart.
+
+If you are switching over from mainline framework firmware, you must clear the flash first.
+
+### Pre-compiled firmware download
+
+You *can* compile the binary yourself. But you can also not.
+Compiled binary is available at folder "[UF2](/UF2)".
+
+
+### Clearing the flash
+
+The first time you flash the firmware, you must first uplaod the `EraseFlash.uf2`. This will take a while. This is because the previous Via-enabled firmware will write a key map onto emulated EEPROM, overriding the mapping of our modified firmware.
+
+After clearing the flash, the keyboard(s) will appear in bootloader mode.
 
 ## Supported Keyboards
 
